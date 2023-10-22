@@ -1,4 +1,4 @@
-package ru.albank.ticket.loanmemoryapp
+package com.whistle.loanmemoryapp
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package ru.albank.ticket.loanmemoryapp.ui.theme
+package com.whistle.loanmemoryapp.ui.theme
 
 import android.app.Activity
 import android.os.Build

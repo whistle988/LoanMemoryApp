@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "ru.albank.ticket.loanmemoryapp"
-    compileSdk = 33
+    namespace = "com.whistle.loanmemoryapp"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.albank.ticket.loanmemoryapp"
+        applicationId = "com.whistle.loanmemoryapp"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
