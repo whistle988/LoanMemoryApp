@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.ui
+package com.whistle.loanmemoryapp.ui.loan
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,7 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.whistle.loanmemoryapp.data.Loan
+import com.whistle.loanmemoryapp.data.model.Loan
 import com.whistle.loanmemoryapp.ui.theme.LoanMemoryAppTheme
 
 @Composable

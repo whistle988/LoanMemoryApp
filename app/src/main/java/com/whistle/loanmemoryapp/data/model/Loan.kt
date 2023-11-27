@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.data
+package com.whistle.loanmemoryapp.data.model
 
 data class Loan(
     val name: String?,

@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.ui
+package com.whistle.loanmemoryapp.ui.loan
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
