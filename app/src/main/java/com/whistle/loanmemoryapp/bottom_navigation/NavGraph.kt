@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.whistle.loanmemoryapp.ui.Favorite
+import com.whistle.loanmemoryapp.ui.Home
+import com.whistle.loanmemoryapp.ui.Profile
 
 @Composable
 fun NavGraph(
