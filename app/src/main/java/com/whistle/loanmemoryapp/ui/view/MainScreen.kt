@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,9 +18,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.whistle.loanmemoryapp.R
 import com.whistle.loanmemoryapp.ui.bottom_navigation.NavGraph
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavigation
 
@@ -30,19 +31,28 @@ import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavigation
 @Composable
 fun MainScreen() {
     val bottomNavController = rememberNavController()
-    var showBottomTopBar by rememberSaveable {
+    var showTopBar by rememberSaveable {
+        mutableStateOf(true)
+    }
+    var showBottomBar by rememberSaveable {
         mutableStateOf(true)
     }
     val navBackStackEntry by bottomNavController.currentBackStackEntryAsState()
 
-    showBottomTopBar = when (navBackStackEntry?.destination?.route) {
+    showTopBar = when (navBackStackEntry?.destination?.route) {
+        "loan_detail" -> false
+        "favorite" -> false
+        "settings" -> false
+        else -> true
+    }
+    showBottomBar = when (navBackStackEntry?.destination?.route) {
         "loan_detail" -> false
         else -> true
     }
 
     Scaffold(
         topBar = {
-            if (showBottomTopBar) {
+            if (showTopBar) {
                 TopAppBar(
                     title = {
                         Text(text = "LoanMemoryApp")
@@ -60,7 +70,7 @@ fun MainScreen() {
                     },
                     actions = {
                         IconButton(
-                            onClick = { /*TODO*/ }
+                            onClick = { bottomNavController.navigate("loan_detail") }
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Add,
@@ -79,7 +89,7 @@ fun MainScreen() {
                             onClick = { /*TODO*/ }
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.Search,
+                                painterResource(id = R.drawable.ic_sort),
                                 contentDescription = "Add"
                             )
                         }
@@ -89,7 +99,7 @@ fun MainScreen() {
             }
         },
         bottomBar = {
-            if (showBottomTopBar) BottomNavigation(navController = bottomNavController)
+            if (showBottomBar) BottomNavigation(navController = bottomNavController)
         },
         content = {
             Column(modifier = Modifier.padding(it)) {

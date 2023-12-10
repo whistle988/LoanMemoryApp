@@ -21,13 +21,13 @@ fun NavGraph(
                 when(item.route) {
                     "home" -> Home(navController)
                     "favorite" -> Favorite()
-                    "profile" -> Settings()
+                    "settings" -> Settings(navController)
                 }
             }
 
         }
         composable(route = "loan_detail") {
-            LoanDetailScreen()
+            LoanDetailScreen(navController)
         }
     }
 }

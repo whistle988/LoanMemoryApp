@@ -1,21 +1,41 @@
 package com.whistle.loanmemoryapp.ui.view
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import android.annotation.SuppressLint
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 
+
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoanDetailScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+fun LoanDetailScreen(navController: NavHostController) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "New Loan")
+                },
+                backgroundColor = Color.White,
+                navigationIcon = {
+                    IconButton(
+                        onClick = { navController.navigateUp() }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
+            )
+        }
     ) {
-        Text(text = "LoanInfoScreen")
+
     }
 }
