@@ -25,6 +25,6 @@ fun Favorite() {
 }
 
 @Composable
-fun Profile() {
+fun Settings() {
 
 }

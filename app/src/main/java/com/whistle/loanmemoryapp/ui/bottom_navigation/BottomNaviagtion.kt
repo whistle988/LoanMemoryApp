@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.bottom_navigation
+package com.whistle.loanmemoryapp.ui.bottom_navigation
 
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
@@ -18,7 +18,7 @@ fun BottomNavigation(
     val listItems = listOf(
         BottomItem.Home,
         BottomItem.Favorite,
-        BottomItem.Profile
+        BottomItem.Settings
     )
     androidx.compose.material.BottomNavigation(
         backgroundColor = Color.White
