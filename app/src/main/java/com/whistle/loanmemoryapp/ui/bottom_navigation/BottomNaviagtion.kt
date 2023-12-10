@@ -10,15 +10,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.whistle.loanmemoryapp.ui.BottomNavScreens
 
 @Composable
 fun BottomNavigation(
     navController: NavHostController
 ) {
     val listItems = listOf(
-        BottomItem.Home,
-        BottomItem.Favorite,
-        BottomItem.Settings
+        BottomNavScreens.Home,
+        BottomNavScreens.Favorite,
+        BottomNavScreens.Settings
     )
     androidx.compose.material.BottomNavigation(
         backgroundColor = Color.White
