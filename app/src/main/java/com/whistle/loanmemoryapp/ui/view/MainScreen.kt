@@ -20,24 +20,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import com.whistle.loanmemoryapp.R
-import com.whistle.loanmemoryapp.ui.bottom_navigation.NavGraph
+import com.whistle.loanmemoryapp.graphs.NavGraph
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavigation
 
 
 @Preview
 @Composable
-fun MainScreen() {
-    val bottomNavController = rememberNavController()
+fun MainScreen(navController: NavHostController) {
     var showTopBar by rememberSaveable {
         mutableStateOf(true)
     }
     var showBottomBar by rememberSaveable {
         mutableStateOf(true)
     }
-    val navBackStackEntry by bottomNavController.currentBackStackEntryAsState()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     showTopBar = when (navBackStackEntry?.destination?.route) {
         "loan_detail" -> false
@@ -70,7 +69,7 @@ fun MainScreen() {
                     },
                     actions = {
                         IconButton(
-                            onClick = { bottomNavController.navigate("loan_detail") }
+                            onClick = { navController.navigate("loan_detail") }
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Add,
@@ -99,11 +98,11 @@ fun MainScreen() {
             }
         },
         bottomBar = {
-            if (showBottomBar) BottomNavigation(navController = bottomNavController)
+            if (showBottomBar) BottomNavigation(navController = navController)
         },
         content = {
             Column(modifier = Modifier.padding(it)) {
-                NavGraph(navController = bottomNavController)
+                NavGraph(navController = navController)
             }
         }
     )
