@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.ui
+package com.whistle.loanmemoryapp.ui.bottom_navigation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column

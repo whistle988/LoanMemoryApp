@@ -6,10 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.whistle.loanmemoryapp.ui.Favorite
-import com.whistle.loanmemoryapp.ui.Home
-import com.whistle.loanmemoryapp.ui.Settings
-import com.whistle.loanmemoryapp.ui.BottomNavScreens
+import com.whistle.loanmemoryapp.ui.bottom_navigation.Favorite
+import com.whistle.loanmemoryapp.ui.bottom_navigation.Home
+import com.whistle.loanmemoryapp.ui.bottom_navigation.Settings
+import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavScreens
 import com.whistle.loanmemoryapp.ui.view.LoanDetailScreen
 
 
