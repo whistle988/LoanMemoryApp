@@ -3,14 +3,16 @@ package com.whistle.loanmemoryapp.graphs
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Favorite
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Home
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Settings
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavScreens
-import com.whistle.loanmemoryapp.ui.view.LoanDetailScreen
+import com.whistle.loanmemoryapp.ui.screens.LoanDetailScreen
 
 
 @Composable
@@ -40,14 +42,23 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
         route = Graph.DETAILS,
         startDestination = DetailsScreen.Information.route
     ) {
-        composable(route = DetailsScreen.Information.route) {
-            LoanDetailScreen(navController)
+        composable(route = DetailsScreen.Information.route,
+            arguments = listOf(
+                navArgument(name = "name") {
+                    type = NavType.StringType
+                }
+            )
+        ) { index ->
+            LoanDetailScreen(
+                navController,
+                name = index.arguments?.getString("name")
+            )
         }
     }
 }
 
 sealed class DetailsScreen(val route: String) {
-    object Information : DetailsScreen(route = "loan_detail")
+    object Information : DetailsScreen(route = "loan_detail/{name}")
 }
 
 object Graph {

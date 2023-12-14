@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.ui.view
+package com.whistle.loanmemoryapp.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.material.Icon
@@ -15,12 +15,14 @@ import androidx.navigation.NavHostController
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoanDetailScreen(navController: NavHostController) {
+fun LoanDetailScreen(navController: NavHostController, name: String?) {
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "New Loan")
+                    Text(text = if (name != "{name}") name!!
+                    else "Новый кредит"
+                    )
                 },
                 backgroundColor = Color.White,
                 navigationIcon = {

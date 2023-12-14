@@ -27,7 +27,7 @@ import com.whistle.loanmemoryapp.ui.theme.LoanMemoryAppTheme
 
 enum class BottomNavScreens(val route: String, val icon: Int, val title: String) {
     Home("home", R.drawable.ic_home, "Home"),
-    Favorite("favorite", R.drawable.ic_book, "Favorite"),
+    Favorite("favorite", R.drawable.ic_book, "Избранные"),
     Settings("settings", R.drawable.ic_settings, "Настройки")
 }
 

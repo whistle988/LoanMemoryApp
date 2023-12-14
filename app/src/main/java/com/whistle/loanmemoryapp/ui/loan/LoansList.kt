@@ -53,7 +53,7 @@ fun LoanCard(name: String?, amountMonth: Double?, navController: NavController) 
             .fillMaxWidth()
             .wrapContentHeight()
             .clickable {
-                navController.navigate("loan_detail")
+                navController.navigate("loan_detail/$name")
             },
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation( defaultElevation = 5.dp ),

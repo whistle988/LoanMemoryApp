@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp.ui.view
+package com.whistle.loanmemoryapp.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -19,15 +19,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.whistle.loanmemoryapp.R
+import com.whistle.loanmemoryapp.graphs.DetailsScreen
 import com.whistle.loanmemoryapp.graphs.NavGraph
+import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavScreens
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavigation
 
-
-@Preview
 @Composable
 fun MainScreen(navController: NavHostController) {
     var showTopBar by rememberSaveable {
@@ -39,13 +38,13 @@ fun MainScreen(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     showTopBar = when (navBackStackEntry?.destination?.route) {
-        "loan_detail" -> false
-        "favorite" -> false
-        "settings" -> false
+        DetailsScreen.Information.route -> false
+        BottomNavScreens.Favorite.route -> false
+        BottomNavScreens.Settings.route -> false
         else -> true
     }
     showBottomBar = when (navBackStackEntry?.destination?.route) {
-        "loan_detail" -> false
+        DetailsScreen.Information.route -> false
         else -> true
     }
 
@@ -69,7 +68,7 @@ fun MainScreen(navController: NavHostController) {
                     },
                     actions = {
                         IconButton(
-                            onClick = { navController.navigate("loan_detail") }
+                            onClick = { navController.navigate(DetailsScreen.Information.route) }
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Add,
