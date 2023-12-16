@@ -13,5 +13,37 @@ val loans = listOf(
     Loan(
         "VTB",
         10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
+    ),
+    Loan(
+        "VTB",
+        10546.0
     )
 )
