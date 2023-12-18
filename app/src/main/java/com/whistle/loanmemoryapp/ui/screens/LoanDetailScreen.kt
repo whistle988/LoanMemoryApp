@@ -1,21 +1,35 @@
 package com.whistle.loanmemoryapp.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
+import com.whistle.loanmemoryapp.MainViewModel
 
-
+@Preview
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoanDetailScreen(navController: NavHostController, name: String?) {
+fun LoanDetailScreen(
+    navController: NavHostController,
+    name: String?,
+    mainViewModel: MainViewModel
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -36,8 +50,28 @@ fun LoanDetailScreen(navController: NavHostController, name: String?) {
                     }
                 }
             )
+        },
+        content = {
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column {
+                    Icon(
+                        imageVector = Icons.Filled.DateRange,
+                        contentDescription = "Date"
+                    )
+                }
+                Column(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    TextField(
+                        value = mainViewModel.dateText.value,
+                        onValueChange = {
+                            mainViewModel.dateText.value = it
+                        }
+                    )
+                }
+            }
         }
-    ) {
-
-    }
+    )
 }

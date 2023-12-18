@@ -19,16 +19,23 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.whistle.loanmemoryapp.MainViewModel
 import com.whistle.loanmemoryapp.R
 import com.whistle.loanmemoryapp.graphs.DetailsScreen
 import com.whistle.loanmemoryapp.graphs.NavGraph
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavScreens
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavigation
 
+
 @Composable
-fun MainScreen(navController: NavHostController) {
+fun MainScreen(
+    mainViewModel: MainViewModel = hiltViewModel(),
+    navController: NavHostController
+) {
+    val loanList = mainViewModel.loanList
     var showTopBar by rememberSaveable {
         mutableStateOf(true)
     }
@@ -47,6 +54,8 @@ fun MainScreen(navController: NavHostController) {
         DetailsScreen.Information.route -> false
         else -> true
     }
+
+    mainViewModel.getAllItems()
 
     Scaffold(
         topBar = {
@@ -101,7 +110,7 @@ fun MainScreen(navController: NavHostController) {
         },
         content = {
             Column(modifier = Modifier.padding(it)) {
-                NavGraph(navController = navController)
+                NavGraph(navController = navController, loanList)
             }
         }
     )

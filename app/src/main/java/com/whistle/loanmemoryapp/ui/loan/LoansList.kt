@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
@@ -31,22 +32,26 @@ import com.whistle.loanmemoryapp.R
 import com.whistle.loanmemoryapp.data.model.Loan
 import com.whistle.loanmemoryapp.ui.theme.LoanMemoryAppTheme
 
+
 @Composable
-fun LoanList(loanList: List<Loan>, navController: NavController) {
+fun LoanList(loanList: MutableState<List<Loan>>, navController: NavController) {
     LoanMemoryAppTheme {
         LazyColumn(
             modifier = Modifier.fillMaxWidth(),
             contentPadding = PaddingValues(16.dp)
         ) {
-            items(loanList) {loan ->
-                LoanCard(loan.name, loan.amountMonth, navController)
+            items(loanList.value) { item ->
+                LoanCard(item.name, item.amountMonth, navController)
             }
         }
     }
 }
 
 @Composable
-fun LoanCard(name: String?, amountMonth: Double?, navController: NavController) {
+fun LoanCard(
+    name: String?,
+    amountMonth: String?,
+    navController: NavController) {
     Card(
         modifier = Modifier
             .padding(10.dp)
