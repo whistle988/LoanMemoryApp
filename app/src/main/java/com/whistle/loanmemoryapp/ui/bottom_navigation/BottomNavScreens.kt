@@ -14,15 +14,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.whistle.loanmemoryapp.R
-import com.whistle.loanmemoryapp.data.model.loans
+import com.whistle.loanmemoryapp.data.model.Loan
 import com.whistle.loanmemoryapp.ui.loan.LoanList
 import com.whistle.loanmemoryapp.ui.theme.LoanMemoryAppTheme
+import androidx.compose.runtime.State
 
 
 enum class BottomNavScreens(val route: String, val icon: Int, val title: String) {
@@ -32,9 +34,12 @@ enum class BottomNavScreens(val route: String, val icon: Int, val title: String)
 }
 
 @Composable
-fun Home(navController: NavController) {
+fun Home(
+    navController: NavController,
+    loanList: MutableState<List<Loan>>
+         ) {
     Surface(color = MaterialTheme.colorScheme.background) {
-        LoanList(loans, navController)
+        LoanList(loanList, navController)
     }
 }
 

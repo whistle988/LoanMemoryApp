@@ -1,6 +1,7 @@
 package com.whistle.loanmemoryapp.graphs
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -8,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import com.whistle.loanmemoryapp.data.model.Loan
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Favorite
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Home
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Settings
@@ -17,7 +19,8 @@ import com.whistle.loanmemoryapp.ui.screens.LoanDetailScreen
 
 @Composable
 fun NavGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    loanList: MutableState<List<Loan>>
 ) {
     NavHost(
         navController = navController,
@@ -25,7 +28,7 @@ fun NavGraph(
         startDestination = BottomNavScreens.Home.route
     ) {
         composable(route = BottomNavScreens.Home.route) {
-            Home(navController)
+            Home(navController, loanList)
         }
         composable(route = BottomNavScreens.Favorite.route) {
             Favorite()
