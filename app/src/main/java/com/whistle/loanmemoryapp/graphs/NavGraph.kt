@@ -14,6 +14,7 @@ import com.whistle.loanmemoryapp.ui.bottom_navigation.Favorite
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Home
 import com.whistle.loanmemoryapp.ui.bottom_navigation.Settings
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavScreens
+import com.whistle.loanmemoryapp.ui.screens.LoanDetailScreen
 
 
 @Composable
@@ -51,11 +52,10 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
                 }
             )
         ) { index ->
-            /*LoanDetailScreen(
+            LoanDetailScreen(
                 navController,
-                name = index.arguments?.getString("name"),
-
-            )*/
+                name = index.arguments?.getString("name")
+            )
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.whistle.loanmemoryapp.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,18 +16,17 @@ import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.whistle.loanmemoryapp.MainViewModel
 
-@Preview
+
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LoanDetailScreen(
     navController: NavHostController,
     name: String?,
-    mainViewModel: MainViewModel
+    mainViewModel: MainViewModel = hiltViewModel(),
 ) {
     Scaffold(
         topBar = {
