@@ -28,6 +28,7 @@ import com.whistle.loanmemoryapp.graphs.DetailsScreen
 import com.whistle.loanmemoryapp.graphs.NavGraph
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavScreens
 import com.whistle.loanmemoryapp.ui.bottom_navigation.BottomNavigation
+import timber.log.Timber
 
 
 @Composable
@@ -54,6 +55,7 @@ fun MainScreen(
         DetailsScreen.Information.route -> false
         else -> true
     }
+    Timber.d("mainViewModel = $mainViewModel")
 
     mainViewModel.getAllItems()
 

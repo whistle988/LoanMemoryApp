@@ -47,21 +47,21 @@ fun NavGraphBuilder.detailsNavGraph(navController: NavHostController) {
     ) {
         composable(route = DetailsScreen.Information.route,
             arguments = listOf(
-                navArgument(name = "name") {
-                    type = NavType.StringType
+                navArgument(name = "id") {
+                    type = NavType.IntType
                 }
             )
         ) { index ->
             LoanDetailScreen(
                 navController,
-                name = index.arguments?.getString("name")
+                id = index.arguments?.getInt("id")
             )
         }
     }
 }
 
 sealed class DetailsScreen(val route: String) {
-    object Information : DetailsScreen(route = "loan_detail/{name}")
+    object Information : DetailsScreen(route = "loan_detail/{id}")
 }
 
 object Graph {

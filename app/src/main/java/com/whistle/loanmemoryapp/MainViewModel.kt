@@ -28,4 +28,8 @@ class MainViewModel @Inject constructor(
     fun deleteItem(item: Loan) = viewModelScope.launch {
         dataBase.dao.deleteItem(item)
     }
+
+    fun getListByID(id: Int): List<Loan> {
+        return loanList.value.filter { it.id == id }
+    }
 }

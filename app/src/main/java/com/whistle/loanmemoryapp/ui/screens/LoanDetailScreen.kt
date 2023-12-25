@@ -1,7 +1,6 @@
 package com.whistle.loanmemoryapp.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,8 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -24,28 +23,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.whistle.loanmemoryapp.MainViewModel
 import com.whistle.loanmemoryapp.R
+import timber.log.Timber
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LoanDetailScreen(
     navController: NavHostController,
-    name: String?,
-    mainViewModel: MainViewModel = hiltViewModel(),
+    id: Int?,
+    mainViewModel: MainViewModel = hiltViewModel()
 ) {
+    val loanList = mainViewModel.loanList.value.filter { it.id == id }
+    Timber.d("LoanList1 = ${mainViewModel.loanList.value.joinToString(" ")}")
+    Timber.d("mainViewModel1 = $mainViewModel")
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = if (name != "{name}") name!!
+                    /*Text(text = if (name != "{name}") name!!
                     else "Новый кредит"
-                    )
+                    )*/
+                    Text(text = "Новый кредит")
                 },
                 backgroundColor = Color.White,
                 navigationIcon = {
@@ -85,10 +91,10 @@ fun LoanDetailScreen(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 10.dp)
+                                .padding(start = 10.dp, top = 7.dp)
                         ) {
                             Text(
-                                text = "Первый платеж",
+                                text = stringResource(id = R.string.title_first_payment),
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 textAlign = TextAlign.Start
@@ -100,7 +106,12 @@ fun LoanDetailScreen(
                                 },
                                 Modifier
                                     .fillMaxWidth()
-                                    .padding(top = 10.dp)
+                                    .padding(top = 5.dp)
+                            )
+                            Divider(
+                                color = Color.Black,
+                                thickness = 1.dp,
+                                modifier = Modifier.padding(top = 2.dp, end = 20.dp)
                             )
                         }
                     }
@@ -121,10 +132,10 @@ fun LoanDetailScreen(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 10.dp)
+                                .padding(start = 10.dp, top = 7.dp)
                         ) {
                             Text(
-                                text = "Сумма кредита",
+                                text = stringResource(id = R.string.title_total_sum_payment),
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 textAlign = TextAlign.Start
@@ -136,7 +147,12 @@ fun LoanDetailScreen(
                                 },
                                 Modifier
                                     .fillMaxWidth()
-                                    .padding(top = 10.dp)
+                                    .padding(top = 5.dp)
+                            )
+                            Divider(
+                                color = Color.Black,
+                                thickness = 1.dp,
+                                modifier = Modifier.padding(top = 2.dp, end = 20.dp)
                             )
                         }
                     }
@@ -157,10 +173,10 @@ fun LoanDetailScreen(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 10.dp)
+                                .padding(start = 10.dp, top = 7.dp)
                         ) {
                             Text(
-                                text = "Срок кредита",
+                                text = stringResource(id = R.string.title_total_term_payment),
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 textAlign = TextAlign.Start
@@ -172,7 +188,12 @@ fun LoanDetailScreen(
                                 },
                                 Modifier
                                     .fillMaxWidth()
-                                    .padding(top = 10.dp)
+                                    .padding(top = 5.dp)
+                            )
+                            Divider(
+                                color = Color.Black,
+                                thickness = 1.dp,
+                                modifier = Modifier.padding(top = 2.dp, end = 20.dp)
                             )
                         }
                     }
@@ -193,10 +214,10 @@ fun LoanDetailScreen(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 10.dp)
+                                .padding(start = 10.dp, top = 7.dp)
                         ) {
                             Text(
-                                text = "Ставка, %",
+                                text = stringResource(id = R.string.title_rate_payment),
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 textAlign = TextAlign.Start
@@ -208,30 +229,40 @@ fun LoanDetailScreen(
                                 },
                                 Modifier
                                     .fillMaxWidth()
-                                    .padding(top = 10.dp)
+                                    .padding(top = 5.dp)
+                            )
+                            Divider(
+                                color = Color.Black,
+                                thickness = 1.dp,
+                                modifier = Modifier.padding(top = 2.dp, end = 20.dp)
                             )
                         }
                     }
-                    Row(
+                    /*Row(
                         horizontalArrangement = Arrangement.SpaceEvenly,
-                        modifier = Modifier.fillMaxWidth().padding(8.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
                     ) {
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = { *//*TODO*//* },
                             content = {
                                 Text(text = "Расчитать")
                             },
-                            modifier = Modifier.weight(1f).padding(5.dp)
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(5.dp)
                         )
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = { *//*TODO*//* },
                             content = {
                                 Text(text = "График")
                             },
-                            modifier = Modifier.weight(1f).padding(5.dp)
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(5.dp)
                         )
-                    }
-
+                    }*/
                 }
             }
         }
