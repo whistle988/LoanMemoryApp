@@ -1,4 +1,4 @@
-package com.whistle.loanmemoryapp
+package com.whistle.loanmemoryapp.ui
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel

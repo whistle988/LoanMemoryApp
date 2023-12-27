@@ -26,12 +26,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.whistle.loanmemoryapp.MainViewModel
+import com.whistle.loanmemoryapp.ui.MainViewModel
 import com.whistle.loanmemoryapp.R
-import timber.log.Timber
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -39,19 +36,14 @@ import timber.log.Timber
 fun LoanDetailScreen(
     navController: NavHostController,
     id: Int?,
-    mainViewModel: MainViewModel = hiltViewModel()
+    mainViewModel: MainViewModel
 ) {
     val loanList = mainViewModel.loanList.value.filter { it.id == id }
-    Timber.d("LoanList1 = ${mainViewModel.loanList.value.joinToString(" ")}")
-    Timber.d("mainViewModel1 = $mainViewModel")
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    /*Text(text = if (name != "{name}") name!!
-                    else "Новый кредит"
-                    )*/
-                    Text(text = "Новый кредит")
+                    Text(text = loanList.firstOrNull()?.name.toString())
                 },
                 backgroundColor = Color.White,
                 navigationIcon = {
@@ -100,7 +92,7 @@ fun LoanDetailScreen(
                                 textAlign = TextAlign.Start
                             )
                             BasicTextField(
-                                value = mainViewModel.dateText.value,
+                                value =  loanList.firstOrNull()?.date.toString(),
                                 onValueChange = {
                                     mainViewModel.dateText.value = it
                                 },
@@ -141,7 +133,7 @@ fun LoanDetailScreen(
                                 textAlign = TextAlign.Start
                             )
                             BasicTextField(
-                                value = mainViewModel.dateText.value,
+                                value = loanList.firstOrNull()?.amountMonth.toString(),
                                 onValueChange = {
                                     mainViewModel.dateText.value = it
                                 },

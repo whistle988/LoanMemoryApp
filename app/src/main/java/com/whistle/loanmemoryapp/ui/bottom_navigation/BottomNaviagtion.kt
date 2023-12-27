@@ -10,6 +10,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.whistle.loanmemoryapp.ui.BottomNavScreens
 
 @Composable
 fun BottomNavigation(

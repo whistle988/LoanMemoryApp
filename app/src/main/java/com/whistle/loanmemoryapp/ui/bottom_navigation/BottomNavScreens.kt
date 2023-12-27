@@ -20,18 +20,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import com.whistle.loanmemoryapp.R
 import com.whistle.loanmemoryapp.data.model.Loan
 import com.whistle.loanmemoryapp.ui.loan.LoanList
 import com.whistle.loanmemoryapp.ui.theme.LoanMemoryAppTheme
-import androidx.compose.runtime.State
 
-
-enum class BottomNavScreens(val route: String, val icon: Int, val title: String) {
-    Home("home", R.drawable.ic_home, "Home"),
-    Favorite("favorite", R.drawable.ic_book, "Избранные"),
-    Settings("settings", R.drawable.ic_settings, "Настройки")
-}
 
 @Composable
 fun Home(
