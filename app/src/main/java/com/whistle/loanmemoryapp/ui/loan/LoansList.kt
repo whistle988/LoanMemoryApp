@@ -41,7 +41,7 @@ fun LoanList(loanList: MutableState<List<Loan>>, navController: NavController) {
             contentPadding = PaddingValues(16.dp)
         ) {
             items(loanList.value) { item ->
-                LoanCard(item.name, item.amountMonth, navController)
+                LoanCard(item.id, item.name, item.amountMonth, navController)
             }
         }
     }
@@ -49,6 +49,7 @@ fun LoanList(loanList: MutableState<List<Loan>>, navController: NavController) {
 
 @Composable
 fun LoanCard(
+    id: Int?,
     name: String?,
     amountMonth: String?,
     navController: NavController) {
@@ -58,7 +59,7 @@ fun LoanCard(
             .fillMaxWidth()
             .wrapContentHeight()
             .clickable {
-                navController.navigate("loan_detail/$name")
+                navController.navigate("loan_detail/$id")
             },
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation( defaultElevation = 5.dp ),

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LoanMemoryApp</string>
+
+    <string name="title_first_payment">Первый платеж</string>
+    <string name="title_total_sum_payment">Сумма кредита</string>
+    <string name="title_total_term_payment">Срок кредита</string>
+    <string name="title_rate_payment">Ставка, %</string>
 </resources>
